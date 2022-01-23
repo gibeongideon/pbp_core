@@ -2,18 +2,59 @@
 {% block title %}Web Client{% endblock %}
 {% block content %}
 
-<div >
 
-Covid Travel Permit Inquiry Form
-
-
-<div >
-
-Check if you are elligibele to travel permit based on Covid19 regulations!
-Enter required details below
-
-
-</div>
+<section class="bg-gradient pt-5 pb-6">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 d-flex flex-row align-items-center justify-content-between">
+                <div class="heading-brand">Covid19 Travel Quide</div>
+                <a href="/api/covid_travel_permit_inquiry/" class="btn btn-dark" target="_blank">Test EndPoint</a>
+                <a href="/permit_inquiry/" class="btn btn-dark" target="_blank">Test Web Client</a>
+            </div>
+        </div>
+        
+        
+        <div class="row mt-6">
+            <div class="col-md-8 mx-auto text-center">
+            
+            
+            
+            
+            					<div class="header-area">
+					
+						<h3 class="title">PBP Covid19 Travel Inquiry </h3>
+						<h4 class="title">WebClient</h4>
+						<p class="sub-title">Froantend_to_figure_out_how_to_create_date_pop_ups</p>
+						<h4 class="title"><a href="/admin" class="mybtn1"  data-toggle="modal" data-target="#signin"> Admin Panel</a></h4>
+					</div>
+					
+					
+			<form action="" method="post">
+    {% csrf_token %}
+    
+    {{ form }}
+    
+  </form>		
+					
+					
+            
+            
+            
+            
+            
+                <h1>Syntax Highlighter for Every Language</h1>
+                <p class="lead mb-5">Prism is a lightweight, extensible syntax highlighter, built with modern web
+                    standards in mind. It’s used in thousands of websites, including some of those you visit daily.</p>
+                <a href="https://github.com/gibeongideon/" class="btn btn-success svg-icon">
+                    <em class="mr-2" data-feather="github"></em>
+                    Contribute
+                </a>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-9 mx-auto">
+                <div class="code-window">
+                 
 
 <form action="" method="post">
     {% csrf_token %}
@@ -21,9 +62,25 @@ Enter required details below
     {{ form }}
     
   </form>
-  
-  
-  </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
 
 
 {% endblock content %}

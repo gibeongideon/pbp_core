@@ -1,38 +1,112 @@
+
+
+
 {% extends "layouts/base.html" %}
 {% block title %}Login{% endblock %}
 
 {% block content %}
-
-	<!-- Login Area Start -->
-	<div class="modal fade login-modal" id="login" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<div class="modal-body">
-					<div class="logo-area">
-							<img class="logo" src="/static/assets/images/logoz.png" alt="">
-					</div>
-					<div class="header-area">
+<!--Header Section-->
+<section class="bg-gradient pt-5 pb-6">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 d-flex flex-row align-items-center justify-content-between">
+                <div class="heading-brand">Covid19 Travel Quide</div>
+                <a href="/api/covid_travel_permit_inquiry/" class="btn btn-dark" target="_blank">Test EndPoint</a>
+                <a href="/permit_inquiry/" class="btn btn-dark" target="_blank">Test Web Client</a>
+                <a href="/admin/" class="btn btn-dark" target="_blank">Admin Panel</a>
+            </div>
+        </div>
+        
+        
+        <div class="row mt-6">
+            <div class="col-md-8 mx-auto text-center">
+            
+            
+            
+            
+            					<div class="header-area">
 					
 						<h3 class="title">PBP Covid19 Travel Inquiry </h3>
 						<h4 class="title">Welcome for a Test Ride.Test WebClient & Api End Point</h4>
 						<p class="sub-title">Login to Test.username is 'admin' and password is 'admin12345' without quotes ofcource.I dint get time to create sign up stuff.Froantend guys are great in this.Sorry!</p>
 						<h4 class="title"><a href="/admin" class="mybtn1"  data-toggle="modal" data-target="#signin"> Admin Panel</a></h4>
 					</div>
-					<div class="form-area">
-						
-					</div>
-					<div class="form-footer">
-						<p>Not a member? 
-								{% comment %} <a href="#">Create account <i class="fas fa-angle-double-right"></i></a> {% endcomment %}
-								<a href="#" class="mybtn1"  data-toggle="modal" data-target="#signin"> Join us</a>
-								{% comment %} <a href="{% url 'users:register' %}"  data-toggle="modal" data-target="#signin"> Join us</a> {% endcomment %}
-						</p>
-					</div>
-				</div>
-			</div>
-			</div>
-		</div>
-		<!-- Login Area End -->
+					
+					
+					
+					
+					
+            
+            
+            
+            
+            <h1>NOTE</h1>
+                <p class="lead mb-5">No authentication for end points but can easly be done.Also users can manage individual queries if needed.Not implemented here.I feel like doing it.I am too idle!If only i can get a frontend guy coz frontend stuff waste lots of time.I like it from the back!</p>
+                
+                <a href="https://github.com/gibeongideon/" class="btn btn-success svg-icon">
+                    <em class="mr-2" data-feather="github"></em>
+                    Contribute
+                </a>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-9 mx-auto">
+                <div class="code-window">
+                    <div class="dots">
+                        <div class="red"></div>
+                        <div class="orange"></div>
+                        <div class="green"></div>
+                    </div>
+                    <pre class="language-javascript line-numbers"><code class="language-javascript">
+                    
+                    
+End Point Examples if you dont have time to run tests! For lazy people!
+
+
+GET /api/covid_travel_permit_inquiry/
+
+
+  {
+
+        "date_of_travel": "2022-01-23T22:50:11Z",
+        "date_of_return": null,
+        "age_of_traveler": 23,
+        "origin_country": 1,
+        "destination_country": 2
+    },
+    
+
+
+
+RESPONSE
+
+HTTP 200 OK
+Allow: GET, POST, HEAD, OPTIONS
+Content-Type: application/json
+Vary: Accept
+
+  {
+        "id": 1,
+        "date_of_travel": "2022-01-23T22:50:11Z",
+        "date_of_return": null,
+        "age_of_traveler": 23,
+        "adult_present": false,
+        "inquiry_status": "Denied",
+        "reason_for_denial": "Date of travel is between the next 2 and 5 following working days from 2022-01-22 22:50:25.571163+00:00",
+        "origin_country": 1,
+        "destination_country": 2
+    },
+    
+    
+    
+</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 {% endblock content %}
+
+
+

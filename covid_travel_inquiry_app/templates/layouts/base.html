@@ -4,38 +4,86 @@
 <!-- Static assets -->
 {% load static %}
 
+
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Covid19TravelInquiry|{% block title %}Home{% endblock %} </title>
+    <meta name="description" content="Prism is a beautiful Bootstrap 4 template for open-source landing pages."/>
 
-  <title>Covid19TravelInquiry|{% block title %}Home{% endblock %} 
-  </title>
+    <!--Google font-->
+    <link href="https://fonts.googleapis.com/css?family=K2D:300,400,500,700,800" rel="stylesheet">
 
-
-
-{% block stylesheets %}{% endblock stylesheets %}
+    <!-- Bootstrap CSS / Color Scheme -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.css' %}">
+    
+ {% block stylesheets %}{% endblock stylesheets %}   
 </head>
+
 
 <body>
 
 
 
+
+
+
 {% block content %}{% endblock content %}
+{% block javascripts %} {% endblock javascripts %}
+  
+  
+  
+  
+ <!--footer-->
+<footer class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a href="/api/covid_travel_permit_inquiry/">Test Drive EndPoint</a></li>
+                    <li class="list-inline-item"><a href="/api/covid_travel_permit_inquiry">API Docs</a></li>
+                    <li class="list-inline-item"><a href="https://github.com/gibeongideon/pbp_core/">Fork It on GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row my-2">
+            <div class="col-md-4 mx-auto text-muted text-center small-xl">
+                &copy; 2022 gideongibeon - All Rights Reserved
+            </div>
+        </div>
+    </div>
+</footer>
 
 
 
+<!--Used By Section-->
+<section class="pb-6">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <div class="mt-5 d-flex flex-row justify-content-md-between flex-wrap press-icons">
+                    <img src="https://www.dariplay.ga" alt="Google"/>
+                    <img src="https://www.dariplay.ga" alt="Twitter"/>
+                    <img src="https://www.dariplay.ga" alt="Python"/>
+                    <img src="https://www.dariplay.ga" alt="Django"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-
-
-
-  {% block javascripts %} 
-
-
- 
-  {% endblock javascripts %}
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.7.3/feather.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<script src="{% static 'assets/js/scripts.js' %}"></script> 
 </body>
 
 
 </html>
+
+
+
+
