@@ -1,0 +1,66 @@
+{% extends "layouts/base.html" %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+	<!-- Login Area Start -->
+	<div class="modal fade login-modal" id="login" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<div class="modal-body">
+					<div class="logo-area">
+							<img class="logo" src="/static/assets/images/logoz.png" alt="">
+					</div>
+					<div class="header-area">
+						<h4 class="title">Welcome for a Test Ride.Test WebClient & Api End Point</h4>
+						<p class="sub-title">Login to Test.username is 'admin' and password is 'admin12345' without quotes ofcource.I dint get time to create sign up stuff.Froantend guys are great in this.Sorry!</p>
+						<h4 class="title"><a href="/admin" class="mybtn1"  data-toggle="modal" data-target="#signin"> Admin Panel</a></h4>
+					</div>
+					<div class="form-area">
+						<form role="form" method="POST" action="">
+						    {% csrf_token %}
+							<div class="form-group">
+									<label for="login-input-email">username*</label>
+									<input type="text"  class="input-field" name="username" id="username" placeholder="Phone number you sign up with" required autofocus>
+									
+							</div>
+							<div class="form-group">
+									<label for="login-input-password">Password*</label>
+									<input type="password" class="input-field" name="password" class="form-control" id="password" placeholder="Password" required>
+									<input type="checkbox" onclick="sPass()">Show Password
+
+							</div>
+							<div class="form-group">
+								<div class="box">
+									{% comment %} <div class="left">
+											<input type="checkbox" class="check-box-field" id="input-save-password" checked>
+										<label for="input-save-password">Remember Password</lasbel>
+										
+									</div> {% endcomment %}
+									<div class="right">
+										<a href="">
+											Forgot Password?
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								   <button type="submit" class="mybtn1">Log In</button>
+							</div>
+						</form>
+					</div>
+					<div class="form-footer">
+						<p>Not a member? 
+								{% comment %} <a href="#">Create account <i class="fas fa-angle-double-right"></i></a> {% endcomment %}
+								<a href="#" class="mybtn1"  data-toggle="modal" data-target="#signin"> Join us</a>
+								{% comment %} <a href="{% url 'users:register' %}"  data-toggle="modal" data-target="#signin"> Join us</a> {% endcomment %}
+						</p>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+		<!-- Login Area End -->
+
+{% endblock content %}

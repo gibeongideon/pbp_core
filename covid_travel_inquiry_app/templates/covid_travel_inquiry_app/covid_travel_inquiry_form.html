@@ -1,0 +1,29 @@
+{% extends "layouts/base.html" %}
+{% block title %}Web Client{% endblock %}
+{% block content %}
+
+<div >
+
+Covid Travel Permit Inquiry Form
+
+
+<div >
+
+Check if you are elligibele to travel permit based on Covid19 regulations!
+Enter required details below
+
+
+</div>
+
+<form action="" method="post">
+    {% csrf_token %}
+    
+    {{ form }}
+    
+  </form>
+  
+  
+  </div>
+
+
+{% endblock content %}
