@@ -26,7 +26,7 @@ class Covid19Api(object):
             return json.loads(data)#['rates']
 
         except Exception as e:
-            logger.exception(f"Error fetching data from {self.url}" )
+
             raise DataFetchException(f"Error fetching rates:{e}")
   
 
@@ -36,7 +36,7 @@ class Covid19Api(object):
         """ 
         fetch_countries = self.get_json_response()
 
-        for country,code ,ISO2 in fetch_rates.items():
+        for country,slug ,ISO2 in fetch_countries.items():
         
             try:
                 from .models import Country#TravelPermitInquiry,
