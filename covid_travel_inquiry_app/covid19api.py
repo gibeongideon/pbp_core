@@ -49,8 +49,10 @@ class Covid19Api(object):
             
                             
     def latest_confirmed_cases_for(self,country):
-        url=self.baseurl+"/summary/"
+        # url=self.baseurl+"/summary/"
+        url='https://api.covid19api.com/summary'
         response_list=response#get_json_response(url)
+        print(response_list)
         #return 18888
         
         for covid_summary_dic in response_list:
