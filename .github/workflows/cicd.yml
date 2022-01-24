@@ -65,8 +65,8 @@ jobs:
         mkdir -p ~/pbp_core
         cd ~/pbp_core
 
-        virtualenv env
-        source env/bin/activate
+        #virtualenv myprojectenv
+        source myprojectenv/bin/activate
 
 
         cd ~/actions-runner/deploy/pbp_core/pbp_core
