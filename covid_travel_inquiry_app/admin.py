@@ -1,5 +1,8 @@
 from django.contrib import admin
-from .models import TravelPermitInquiry,Country
+from .models import TravelPermitInquiry,Country,CountryListUpdate
+
+
+admin.site.register(CountryListUpdate)
 
 admin.site.register(Country)
 

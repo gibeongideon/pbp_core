@@ -2,7 +2,7 @@
 from django.db import models
 from datetime import datetime, timedelta ,timezone
 from .covid19api import Covid19Api
-
+covid19api = Covid19Api()
        
 #class Setting(models.Model):
  #   name = models.CharField(
@@ -95,7 +95,7 @@ class TravelPermitInquiry(models.Model):
     @staticmethod
     def covid_cases_in(country):
         try:
-            covid19api = Covid19Api()
+            # covid19api = Covid19Api()
             return covid19api.latest_confirmed_cases_for(country)
 
         except Exception as e:
@@ -161,7 +161,7 @@ class TravelPermitInquiry(models.Model):
                if  self.covid_cases_in_origin_country > self.covid_cases_in_destination_country :
                    print('CASESBBB')
                    self.inquiry_status="Denied"
-                   self.reason_for_denial = f"Traveller destination_country has less Covid19 cases( {self.covid_cases_in_destination_country}) than origin_country with {self.covid_cases_in_origin_country} cases"
+                   self.reason_for_denial = f"Traveller destination_country({self.destination_country.name}) has less Covid19 cases( {self.covid_cases_in_destination_country}) than origin_country({self.origin_country.name}) with {self.covid_cases_in_origin_country} cases"
             
             if not self.inquiry_status:
                self.inquiry_status="Allowed"        
@@ -179,3 +179,21 @@ class TravelPermitInquiry(models.Model):
             pass 
 
 
+
+
+#need not to be in model level
+class CountryListUpdate(models.Model):            
+    def save(self, *args, **kwargs):
+        try:
+            # covid19api = Covid19Api()
+            covid19api.save_countries_in_db()                
+            super(CountryListUpdate, self).save(*args, **kwargs)    
+               
+        except Exception as e:
+            print('ERR',e)
+            #super(TravelPermitInquiry, self).save(*args, **kwargs)
+            pass 
+
+
+       
+       

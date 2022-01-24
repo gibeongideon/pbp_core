@@ -1,7 +1,12 @@
 # pbp_core
+Demo
+No authentication required
+
+https://travelguide22.herokuapp.com/
+https://travelguide22.herokuapp.com/api/covid_travel_permit_inquiry/
+
 
 QUERY1:
-
 
 
 {
@@ -59,3 +64,14 @@ QUERY2
         "origin_country": 1,
         "destination_country": 2
     },
+
+
+
+
+24/01/2022
+App Building Time  Plan
+________________________
+2hours-Think hard
+1hour-Paper Works
+3hours(spread_time)-Test-Driven-Development/CICD
+1hour-GO YELL AT MY NEIGHBOUR SAM!

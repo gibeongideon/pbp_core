@@ -1,4 +1,4 @@
-from django.conf import settings
+# from django.conf import settings
 import json
 from .exceptions import DataFetchException, CountrySaveException
  
@@ -8,7 +8,7 @@ except ImportError:
     from urllib.request import urlopen
 
 
-from .testdata import response # test
+from .testdata import response,resp # test
 
 class Covid19Api(object):
 
@@ -34,30 +34,31 @@ class Covid19Api(object):
         """
         Creates countries  and save for future reference
         """ 
-        fetch_countries = self.get_json_response()
+        url='https://api.covid19api.com/countries'
 
-        for country,slug ,ISO2 in fetch_countries.items():
-        
-            try:
-                from .models import Country#TravelPermitInquiry,
-                currency, _ = Country.objects.get_or_create(name=country,slug=slug,ISO2=ISO2)
+        fetched_countries = resp#self.get_json_response(url)
+        response_list=fetched_countries
 
-            except Exception as e:
-                raise CountrySaveException(f"Error saving rates:{e}")
-                pass ### 
+        for covid_summary_dic in response_list:
+            for country,slug ,ISO2 in covid_summary_dic.items():
+                try:
+                    from .models import Country
+                    Country.objects.update_or_create(name=country,slug=slug,ISO2=ISO2)
+                except Exception as e:
+                    raise CountrySaveException(f"Error saving rates:{e}") 
 
-            
+          
                             
     def latest_confirmed_cases_for(self,country):
         # url=self.baseurl+"/summary/"
+
         url='https://api.covid19api.com/summary'
-        response_list=response#get_json_response(url)
-        print(response_list)
-        #return 18888
+        world_covid_summary_dict=response#     self.get_json_response(url)
+        counties_summary_list=world_covid_summary_dict["Countries"]
         
-        for covid_summary_dic in response_list:
-            if str((covid_summary_dic.get('Country')))==str(country):
-                return float(covid_summary_dic.get('cases'))
+        for each_country_covid_summary_dic in counties_summary_list:
+            if str((each_country_covid_summary_dic.get('Country')))==str(country):
+                return float(each_country_covid_summary_dic.get('TotalConfirmed'))
         else:
             return 0#add smart exception handling #TODO
             
