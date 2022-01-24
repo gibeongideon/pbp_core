@@ -58,8 +58,8 @@ jobs:
     - name: Create Vitrual_Env & Install Dependencies
       run: |
 
-        mkdir -p ~/pbp_core
-        cd ~/pbp_core
+        mkdir -p ~/myprojectdir
+        cd ~/myprojectdir
 
         #virtualenv myprojectenv
         #source myprojectenv/bin/activate
@@ -72,16 +72,16 @@ jobs:
 
     - name: Create Migrations Backup Directories
       run: |  
-        mkdir -p ~/pbp_core/migrations/covid_travel_inquiry_app/migrations
+        mkdir -p ~/myprojectdir/migrations/covid_travel_inquiry_app/migrations
 
 
-        cd ~/pbp_core/migrations
+        cd ~/myprojectdir/migrations
         tree
 
 
     - name: RSYNC Backup Migrations To Workin Directory
       run: |
-        rsync -a --delete ~/pbp_core/migrations/covid_travel_inquiry_app/migrations ~/actions-runner/deploy/pbp_core/pbp_core/covid_travel_inquiry_app
+        rsync -a --delete ~/myprojectdir/migrations/covid_travel_inquiry_app/migrations ~/actions-runner/deploy/pbp_core/pbp_core/covid_travel_inquiry_app
 
         
     - name: COLLECTSTATIC
@@ -109,13 +109,13 @@ jobs:
 
     - name: Rsync Workin Directory to Backup Migrations-covid_travel_inquiry_app
       run: |
-        rsync -a --delete ~/actions-runner/deploy/pbp_core/pbp_core/covid_travel_inquiry_app/migrations ~/pbp_core/migrations/covid_travel_inquiry_app
-        cd ~/pbp_core/migrations/covid_travel_inquiry_app
+        rsync -a --delete ~/actions-runner/deploy/pbp_core/pbp_core/covid_travel_inquiry_app/migrations ~/myprojectdir/migrations/covid_travel_inquiry_app
+        cd ~/myprojectdir/migrations/covid_travel_inquiry_app
         tree
 
 
 
     - name: Backup Migrations_Updated
       run: |
-        cd ~/pbp_core/migrations
+        cd ~/myprojectdir/migrations
         tree
