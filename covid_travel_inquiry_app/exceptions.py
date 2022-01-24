@@ -1,10 +1,5 @@
 
 class DataFetchException(Exception):
     """
-    Base exceptions raised on faild network fetc
+    Base exceptions raised on faild network fetch
     """
-class CountrySaveException(Exception):
-    """
-    Raise  exceptions raised by on faied save to db
-    """
-

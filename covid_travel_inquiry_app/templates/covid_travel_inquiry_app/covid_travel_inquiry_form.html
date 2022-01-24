@@ -10,6 +10,7 @@
                 <div class="heading-brand">Covid19 Travel Quide</div>
                 <a href="/api/covid_travel_permit_inquiry/" class="btn btn-dark" target="_blank">Test EndPoint</a>
                 <a href="/permit_inquiry/" class="btn btn-dark" target="_blank">Test Web Client</a>
+                <a href="/admin/" class="btn btn-dark" target="_blank">Admin Panel</a>
             </div>
         </div>
         
@@ -24,28 +25,21 @@
 					
 						<h3 class="title">PBP Covid19 Travel Inquiry </h3>
 						<h4 class="title">WebClient</h4>
-						<p class="sub-title">Froantend_to_figure_out_how_to_create_date_pop_ups</p>
-						<h4 class="title"><a href="/admin" class="mybtn1"  data-toggle="modal" data-target="#signin"> Admin Panel</a></h4>
-					</div>
+						<p class="sub-title">Froantend_to_create_date_pop_ups.Date-Format 2022-01-27T00:00:00Z</p>
 					
 					
-			<form action="" method="post">
-    {% csrf_token %}
-    
-    {{ form }}
-    
-  </form>		
-					
-					
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        
+                        {{ form }}
+                        <button type="submit" >Submit</button>
+                      </form>				
+                       
+                      
             
-            
-            
-            
-            
-                <h1>Syntax Highlighter for Every Language</h1>
-                <p class="lead mb-5">Prism is a lightweight, extensible syntax highlighter, built with modern web
-                    standards in mind. It’s used in thousands of websites, including some of those you visit daily.</p>
-                <a href="https://github.com/gibeongideon/" class="btn btn-success svg-icon">
+                
+                <p class="lead mb-5">Froatend is messy but working!Need fix</p>
+                <a href="https://github.com/gibeongideon/pbp_core" class="btn btn-success svg-icon">
                     <em class="mr-2" data-feather="github"></em>
                     Contribute
                 </a>
@@ -55,13 +49,59 @@
             <div class="col-md-9 mx-auto">
                 <div class="code-window">
                  
+                    <div class="table-responsive">
+                        <table class="table tablesorter " id="">
+                          <thead class=" text-primary">
+                            <tr>
+                              <th>
+                                Date_Of_Travel
+                              </th>
+                              <th>
+                                Date_Of_Return
+                              </th>
+                              <th>
+                                Origin_Country
+                              </th>
+                              <th>
+                                Destination_Country
+                              </th>
+                              <th class="text-center">
+                                Inquiry_Status
+                              </th>
+                              <th>
+                                Reason_For_Denial
+                              </th>              
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {%for latest_queri in latest_queriz%}
+                
+                            <tr>
+                              <td>
+                                {{latest_queri.date_of_travel}}
+                              </td>
+                              <td>
+                                {{latest_queri.date_of_return}}
+                              </td>
+                              <td>
+                                {{latest_queri.origin_country}}
+                              </td>
+                              <td>
+                                {{latest_queri.destination_country}}
+                              </td>
 
-<form action="" method="post">
-    {% csrf_token %}
-    
-    {{ form }}
-    
-  </form>
+                              <td>
+                                {{latest_queri.inquiry_status}}
+                              </td>
+                              <td >
+                                {{latest_queri.reason_for_denial}}
+                              </td>                
+                            </tr>
+                            {%endfor%}
+                          </tbody>
+                        </table>
+                      </div>
+
 
 
 

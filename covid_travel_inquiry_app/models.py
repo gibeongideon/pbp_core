@@ -31,7 +31,10 @@ class Country(models.Model):
         blank=True,
         null=True
     ) 
-    
+
+    class Meta: 
+        verbose_name_plural = "Countries"    
+
     def __str__(self):
         return str(self.name)
               
@@ -181,8 +184,13 @@ class TravelPermitInquiry(models.Model):
 
 
 
-#need not to be in model level
-class CountryListUpdate(models.Model):            
+#TODO-move to view level
+class CountryListUpdate(models.Model):   
+    def __str__(self):
+        return 'Countries-List-Update '+str(self.id)
+    class Meta: 
+        verbose_name_plural = "Countries-List-Updates"
+                             
     def save(self, *args, **kwargs):
         try:
             # covid19api = Covid19Api()
@@ -190,9 +198,9 @@ class CountryListUpdate(models.Model):
             super(CountryListUpdate, self).save(*args, **kwargs)    
                
         except Exception as e:
-            print('ERR',e)
-            #super(TravelPermitInquiry, self).save(*args, **kwargs)
-            pass 
+            return#i.e dont create update at all
+
+       
 
 
        
