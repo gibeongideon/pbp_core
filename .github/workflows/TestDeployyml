@@ -38,3 +38,84 @@ jobs:
     - name: Run Tests
       run: |
         python manage.py test
+
+
+
+        
+  deploy:
+    runs-on: self-hosted
+    needs: build
+    name: deploy
+
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+
+    - name: Create Vitrual_Env & Install Dependencies
+      run: |
+
+        mkdir -p ~/pbp_core
+        cd ~/pbp_core
+
+        virtualenv env
+        source env/bin/activate
+
+
+        cd ~/actions-runner/deploy/pbp_core/pbp_core
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+
+
+    - name: Create Migrations Backup Directories
+      run: |  
+        mkdir -p ~/pbp_core/migrations/covid_travel_inquiry_app/migrations
+
+
+        cd ~/pbp_core/migrations
+        tree
+
+
+    - name: RSYNC Backup Migrations To Workin Directory
+      run: |
+        rsync -a --delete ~/pbp_core/migrations/covid_travel_inquiry_app/migrations ~/actions-runner/deploy/pbp_core/pbp_core/covid_travel_inquiry_app
+
+        
+    - name: COLLECTSTATIC
+      run: |
+        cd ~/actions-runner/deploy/pbp_core/pbp_core                
+        python manage.py collectstatic
+
+    - name: MAKEMIGRATIONS
+      run: |
+        cd ~/actions-runner/deploy/pbp_core/pbp_core 
+        python manage.py makemigrations covid_travel_inquiry_app
+
+
+    ## All
+    - name: APP-MIGRATE
+      run: |
+        cd ~/actions-runner/deploy/pbp_core/pbp_core        
+        python manage.py migrate
+
+    ## covid_travel_inquiry_app
+    - name: MIGRATE-covid_travel_inquiry_app
+      run: |
+        cd ~/actions-runner/deploy/pbp_core/pbp_core        
+        python manage.py migrate covid_travel_inquiry_app
+
+    - name: Rsync Workin Directory to Backup Migrations-covid_travel_inquiry_app
+      run: |
+        rsync -a --delete ~/actions-runner/deploy/pbp_core/pbp_core/covid_travel_inquiry_app/migrations ~/pbp_core/migrations/covid_travel_inquiry_app
+        cd ~/pbp_core/migrations/covid_travel_inquiry_app
+        tree
+
+
+
+    - name: Backup Migrations_Updated
+      run: |
+        cd ~/pbp_core/migrations
+        tree
