@@ -26,7 +26,11 @@ SECRET_KEY = '*0b_*fs!mv&x2a)vax22%1dzok4c0+r9=n!ufade(a+=8uo^g9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+<<<<<<< HEAD
 ALLOWED_HOSTS = ["*"]
+=======
+ALLOWED_HOSTS = ["178.128.148.116","localhost","pbptravelguide.ga","www.pbptravelguide.ga"]
+>>>>>>> 7012a5d2b64926067c6c2e8b2c39f588b462aec9
 
 
 # Application definition
