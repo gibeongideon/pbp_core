@@ -84,6 +84,19 @@ DATABASES = {
 }
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'pbp_core_db',
+#         'USER': 'ubuntu',
+#         'PASSWORD': '!password',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
+
+
+
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
@@ -127,5 +140,8 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = "/static/"
-STATIC_ROOT = os.path.join(BASE_DIR, '/static') 
+# STATIC_ROOT = os.path.join(BASE_DIR, '/static') 
 
+
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
