@@ -10,17 +10,15 @@ def homepage(request):
 
 #@login_required#not must 
 def travel_permit_inquiry_view(request):
-
-    latest_queriz = TravelPermitInquiry.objects.order_by(
-        "date_of_travel"
-    )[:5]
-
+    form = TravelPermitInquiryForm(request.POST)
+    latest_queriz = TravelPermitInquiry.objects.order_by("-id")[:5]
     if request.method == 'POST':
-        form = TravelPermitInquiryForm(request.POST)
+        # form = TravelPermitInquiryForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('/permit_inquiry/')
         else:
+            return redirect('/permit_inquiry/')
             print(form.errors)   #debu 
     else:
         form = TravelPermitInquiryForm()

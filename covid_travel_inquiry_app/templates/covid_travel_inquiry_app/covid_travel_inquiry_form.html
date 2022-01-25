@@ -25,7 +25,7 @@
 					
 						<h3 class="title">PBP Covid19 Travel Inquiry </h3>
 						<h4 class="title">WebClient</h4>
-						<p class="sub-title">Froantend_to_create_date_pop_ups.Date-Format 2022-01-27T00:00:00Z</p>
+						<p class="sub-title">Froantend_to_create_date_pop_ups.Date-Format 2022-01-27 or 2022-01-27T00:00:00Z</p>
 					
 					
                     <form action="" method="post">
@@ -38,10 +38,10 @@
                       
             
                 
-                <p class="lead mb-5">Froatend is messy but working!Need fix</p>
+                <p class="lead mb-5">Form is messy.I know</p>
                 <a href="https://github.com/gibeongideon/pbp_core" class="btn btn-success svg-icon">
                     <em class="mr-2" data-feather="github"></em>
-                    Contribute
+                    Source Code
                 </a>
             </div>
         </div>
@@ -65,6 +65,11 @@
                               <th>
                                 Destination_Country
                               </th>
+
+                            </th>
+                            <th>
+                              Traveler Age
+                            </th>                              
                               <th class="text-center">
                                 Inquiry_Status
                               </th>
@@ -89,7 +94,9 @@
                               <td>
                                 {{latest_queri.destination_country}}
                               </td>
-
+                              <td>
+                                {{latest_queri.age_of_traveler}}
+                              </td>
                               <td>
                                 {{latest_queri.inquiry_status}}
                               </td>
