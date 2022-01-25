@@ -35,7 +35,7 @@ class Covid19Api(object):
         # url=self.baseurl+"/countries/"
         url='https://api.covid19api.com/countries'
 
-        fetched_countries = resp#self.get_json_response(url)
+        fetched_countries = self.get_json_response(url)
         response_list=fetched_countries
 
         for covid_summary_dic in response_list:
@@ -49,7 +49,7 @@ class Covid19Api(object):
     def latest_confirmed_cases_for(self,country):
         # url=self.baseurl+"/summary/"
         url='https://api.covid19api.com/summary'
-        world_covid_summary_dict=response#     self.get_json_response(url)
+        world_covid_summary_dict=self.get_json_response(url)
         counties_summary_list=world_covid_summary_dict["Countries"]
         
         for each_country_covid_summary_dic in counties_summary_list:
