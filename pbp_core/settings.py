@@ -87,6 +87,17 @@ DATABASES = {
         'PORT':  5432
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'd333rt82epihss',
+#         'USER': 'aioofbechjceru',
+#         'PASSWORD': 'cebb31b4ae497ec939035bf49b7f2a5e9cda419b17eedd8aeed9c6d9c58c546d',
+#         'HOST': 'ec2-3-216-113-109.compute-1.amazonaws.com',
+#         'PORT':  5432
+#     }
+# }
+
 
 # DATABASES = {
 #     'default': {

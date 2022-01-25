@@ -253,8 +253,6 @@ venv.bak/
 .mp3
 .mp4
 
-# Ignore Migrations (Disabled on production only)
-
 
 logfile
 
