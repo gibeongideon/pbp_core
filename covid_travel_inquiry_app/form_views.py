@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect#, reverse
-from django.contrib.auth.decorators import login_required
+# from django.contrib.auth.decorators import login_required
 
 from .models import TravelPermitInquiry
 from .forms import TravelPermitInquiryForm
@@ -18,8 +18,7 @@ def travel_permit_inquiry_view(request):
             form.save()
             return redirect('/permit_inquiry/')
         else:
-            return redirect('/permit_inquiry/')
-            print(form.errors)   #debu 
+            return redirect('/permit_inquiry/') 
     else:
         form = TravelPermitInquiryForm()
         return render(request, 'covid_travel_inquiry_app/covid_travel_inquiry_form.html',{'form':form, "latest_queriz": latest_queriz})

@@ -102,7 +102,7 @@ class TravelPermitInquiry(models.Model):
             return covid19api.latest_confirmed_cases_for(country)
 
         except Exception as e:
-            print('API_ERR',e)
+            print('API_ERR',e)#debu
             return 0
             
     @property    
@@ -121,48 +121,32 @@ class TravelPermitInquiry(models.Model):
             earliest_date_to_travel = today + timedelta(days=2)
             latest_date_to_travel  = today + timedelta(days=5)
                         
-            if self.date_of_travel > latest_date_to_travel  or self.date_of_travel < earliest_date_to_travel:
-                 print('CASE-A')
-                        
+            if self.date_of_travel > latest_date_to_travel  or self.date_of_travel < earliest_date_to_travel:                        
                  self.inquiry_status="Denied"
                  self.reason_for_denial = f"Date of travel is between the next 2 and 5 following working days from {today}"
                         
-            print(self.inquiry_status)
             if self.date_of_return and not self.inquiry_status=="Denied":
-                print('CASE-B')
-            
                 allowed_travel_days=60 #bad code #refactor#hard_coded_can_be_place_in_seetings_model_to_allow_quick changes#TODO
                 latest_alowed_return_day = latest_date_to_travel + timedelta(days=allowed_travel_days)
  
             
                 if  latest_alowed_return_day < self.date_of_return:
-                    print('BOOM!')
                     self.inquiry_status="Denied"
                     self.reason_for_denial = f"Date of return is not within 2 months of the Date of travel from date_of_travel({today})"
-            print(self.inquiry_status)        
+       
             if not self.inquiry_status=="Denied":
-                print('CASE-C')
-                print(self.age_of_traveler)
-            
                 if  self.age_of_traveler > 15 and self.age_of_traveler<=21:#bad code #refactor#hard_coded_can_be_place_in_seetings_model_to_allow_quick changes#TODO
-                    print('KIDDBBBBBB')
-                    
                     if not self.adult_present:
-                        print('RAAAA')
                         self.inquiry_status="Denied"
                         self.reason_for_denial = f"Traveler is {self.age_of_traveler} years old without an adult yet all travelers within 16-21 of age travel with the supervision of an adult" 
                         
                 if  self.age_of_traveler < 16 or self.age_of_traveler > 64 :#bad code #refactor#hard_coded_can_be_place_in_seetings_model_to_allow_quick changes#TODO
-                    print('INKIDD')
                     self.inquiry_status="Denied"
                     self.reason_for_denial = f"Traveller of age between 21 & 65 are only allowed to apply permit.Yet traveler is just {self.age_of_traveler} years old"
                     
                                                                                    
-            if not self.inquiry_status=="Denied":
-               print('CASE-D')            
-               print('SSS',self.covid_cases_in_origin_country,self.covid_cases_in_destination_country )          
+            if not self.inquiry_status=="Denied":      
                if  self.covid_cases_in_origin_country > self.covid_cases_in_destination_country :
-                   print('CASESBBB')
                    self.inquiry_status="Denied"
                    self.reason_for_denial = f"Traveller destination_country({self.destination_country.name}) has less Covid19 cases( {self.covid_cases_in_destination_country}) than origin_country({self.origin_country.name}) with {self.covid_cases_in_origin_country} cases"
             
@@ -177,7 +161,7 @@ class TravelPermitInquiry(models.Model):
             super(TravelPermitInquiry, self).save(*args, **kwargs)    
                
         except Exception as e:
-            print('ERR',e)
+            print('ERR',e)#debu
             #super(TravelPermitInquiry, self).save(*args, **kwargs)
             pass 
 
