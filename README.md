@@ -1,4 +1,5 @@
 # pbp_core
+NOTE/app is not hack secure!very hackable.Can be fixed.Not today 
 Demo
 No authentication required
 
